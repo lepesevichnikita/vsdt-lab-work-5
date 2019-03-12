@@ -8,10 +8,10 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
-find_package(Qt5 COMPONENTS Widgets Qml Quick REQUIRED)
-find_package(Qt5QuickCompiler)
-
 set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
+
 include_directories(${INCLUDE_DIR})
 
 add_subdirectory(src build)
+
+include_directories(${PROJECT_BINARY_DIR})
