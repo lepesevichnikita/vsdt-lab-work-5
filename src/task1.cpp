@@ -46,6 +46,6 @@ void Task1::calculateAreaOfRing()
     qDebug() << "Inter radius: " << inter_radius_;
     qreal areaOfBiggerCircle = calculateAreaOfCircle(outer_radius_);
     qreal areaOfSmallerCircle = calculateAreaOfCircle(inter_radius_);
-    area_of_ring_ = areaOfBiggerCircle - areaOfSmallerCircle;
+    area_of_ring_ = qAbs(areaOfBiggerCircle - areaOfSmallerCircle);
     emit areaOfRingChanged();
 }

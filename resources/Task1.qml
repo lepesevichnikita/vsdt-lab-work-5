@@ -5,7 +5,6 @@ import io.qt.examples.task1 1.0
 
 Column {
   id: root
-
   padding: 20
 
   Task1 {
@@ -27,10 +26,10 @@ Column {
     }
   }
 
-
   Text {
     text: qsTr("Внутренний радиус кольца")
   }
+
   TextField {
     text: task1.interRadius.toFixed(decimals)
     placeholderText: qsTr("Введите внутренний радиус кольца")
@@ -39,7 +38,6 @@ Column {
       task1.interRadius = parseFloat(text).toFixed(decimals)
     }
   }
-
 
   Text {
     text: qsTr("Площадь кольца")
@@ -50,4 +48,5 @@ Column {
     text: task1.areaOfRing.toFixed(decimals)
     placeholderText: qsTr("Площадь кольца")
   }
+
 }

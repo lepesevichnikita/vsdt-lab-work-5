@@ -23,7 +23,13 @@ ApplicationWindow {
       }
     }
 
-    Task1 {
+    Row {
+      Task1 {
+      }
+    }
+
+    Row {
+      Task2 {}
     }
   }
 }
