@@ -9,8 +9,12 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 
 set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
+set(RESOURCES_DIR "${PROJECT_SOURCE_DIR}/resources")
 
 include_directories(${INCLUDE_DIR})
+
+find_package(Qt5 COMPONENTS Widgets Qml Quick Core REQUIRED)
+find_package(Qt5QuickCompiler)
 
 add_subdirectory(src build)
 
