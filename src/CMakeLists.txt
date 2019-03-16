@@ -8,7 +8,7 @@ set(lab5_SRCS
         ${lab5QtClasses}
         )
 
-tquick_compiler_add_resources(RESOURCES
+qtquick_compiler_add_resources(RESOURCES
         "${RESOURCES_DIR}/qml.qrc"
         )
 add_executable(lab5

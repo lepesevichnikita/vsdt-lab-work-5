@@ -3,26 +3,61 @@
 
 #include <QObject>
 #include <QString>
+#include <QtMath>
+#include <QDebug>
 
-class Task1 : public QObject {
- Q_OBJECT
-  Q_PROPERTY(QString outerRadius
-                 READ outerRadius
-                 WRITE setOuterRadius
-                 NOTIFY
-                 outerRadiusChanged)
+class Task1: public QObject
+{
+Q_OBJECT
+    Q_PROPERTY(qreal outerRadius
+                   READ outerRadius
+                   WRITE setOuterRadius
+                   NOTIFY
+                   outerRadiusChanged)
 
- public:
-  explicit Task1(QObject *parent = nullptr);
+    Q_PROPERTY(qreal interRadius
+                   READ
+                       interRadius
+                   WRITE
+                       setInterRadius
+                   NOTIFY
+                   interRadiusChanged)
 
-  QString outerRadius();
-  void setOuterRadius(const QString &);
+    Q_PROPERTY(qreal
+                   areaOfRing
+                   READ
+                   areaOfRing
+                   NOTIFY
+                   areaOfRingChanged
+    )
 
- signals:
-  void outerRadiusChanged();
+public:
+    explicit Task1(QObject *parent = nullptr);
 
- private:
-  QString outer_radius_;
+    qreal outerRadius();
+    qreal interRadius();
+    qreal areaOfRing();
+
+    void setOuterRadius(const qreal &);
+    void setInterRadius(const qreal &);
+
+signals:
+    void outerRadiusChanged();
+    void interRadiusChanged();
+    void areaOfRingChanged();
+
+public slots:
+    void calculateAreaOfRing();
+
+private:
+    qreal outer_radius_;
+    qreal inter_radius_;
+    qreal area_of_ring_;
+
+    static inline qreal calculateAreaOfCircle(const qreal radius)
+    {
+        return M_PI * qPow(radius, 2);
+    }
 };
 
 #endif
