@@ -4,24 +4,25 @@
 #include <QObject>
 #include <QString>
 
-class Task1: public QObject {
-  Q_OBJECT
-  Q_PROPERTY(QString outerRadius 
-      READ outerRadius
-      WRITE setOuterRadius
-      NOTIFY outerRadiusChanged)
+class Task1 : public QObject {
+ Q_OBJECT
+  Q_PROPERTY(QString outerRadius
+                 READ outerRadius
+                 WRITE setOuterRadius
+                 NOTIFY
+                 outerRadiusChanged)
 
-  public:
-    explicit Task1(QObject * parent = nullptr);
+ public:
+  explicit Task1(QObject *parent = nullptr);
 
-    QString outerRadius();
-    void setOuterRadius(const QString&);
+  QString outerRadius();
+  void setOuterRadius(const QString &);
 
-  signals:
-    void outerRadiusChanged();
+ signals:
+  void outerRadiusChanged();
 
-  private:
-    QString outer_radius_;
+ private:
+  QString outer_radius_;
 };
 
 #endif

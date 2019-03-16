@@ -15,7 +15,7 @@ ApplicationWindow {
 
   TextField {
     text: qsTr(task1.outerRadius)
-    placeholder: qsTr("Введите внешний радиус кольца")
+    placeholderText: qsTr("Введите внешний радиус кольца")
     anchors.centerIn: parent
     onTextChanged: task1.outerRadius = text
   }
