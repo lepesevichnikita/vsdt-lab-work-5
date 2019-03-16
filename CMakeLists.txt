@@ -11,6 +11,11 @@ set(CMAKE_AUTOUIC ON)
 set(INCLUDE_DIR "${PROJECT_SOURCE_DIR}/include")
 set(RESOURCES_DIR "${PROJECT_SOURCE_DIR}/resources")
 
+set(EXECUTABLE_NAME "${PROJECT_NAME}_executable")
+set(LIBRARY_NAME "${PROJECT_NAME}.o")
+set(APK_NAME "${PROJECT_NAME}")
+
+
 include_directories(${INCLUDE_DIR})
 
 find_package(Qt5 COMPONENTS Widgets Qml Quick Core REQUIRED)

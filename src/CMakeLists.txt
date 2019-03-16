@@ -11,9 +11,25 @@ set(lab5_SRCS
 qtquick_compiler_add_resources(RESOURCES
         "${RESOURCES_DIR}/qml.qrc"
         )
-add_executable(lab5
-        ${lab5_SRCS}
-        ${RESOURCES}
-        )
 
-qt5_use_modules(lab5 Widgets Quick Core Network)
+if(ANDROID)
+  set(BINARY_NAME ${LIBRARY_NAME})
+  add_library(${LIBRARY_NAME}
+          SHARED
+          ${lab5_SRCS}
+          ${RESOURCES}
+          )
+  add_qt_android_apk(${APK_NAME} ${LIBRARY_NAME})
+else()
+  set(BINARY_NAME ${EXECUTABLE_NAME})
+  add_executable(${EXECUTABLE_NAME}
+          ${lab5_SRCS}
+          ${RESOURCES}
+          )
+endif()
+
+qt5_use_modules(${BINARY_NAME} Widgets Quick Core Network)
+
+if(ANDROID)
+  add_qt_android_apk(${APK_NAME} ${BINARY_NAME})
+endif()
