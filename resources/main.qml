@@ -1,34 +1,37 @@
-import QtQuick 2.12
-import QtQuick.Controls 1.0
+import QtQuick 2.7
+import QtQuick.Controls 2.5
+import QtQuick.Layouts 1.3
 
 ApplicationWindow {
-  property int decimals: 2
+  property int inputMinimumHeight: 20
+  minimumWidth: 240
+  minimumHeight: 320
 
   visible: true
   title: qsTr("Lab5")
 
-  Column {
-    padding: 40
+  footer: TabBar {
+    id: bar
+    width: parent.width
 
-    Text {
-      text: qsTr("Точность")
+    TabButton {
+      text: qsTr("Первое задание")
     }
 
-    TextField {
-      text: decimals
-      placeholderText: qsTr("Введите точность")
-      inputMethodHints: Qt.ImhPreferNumbers
-      onEditingFinished: {
-        decimals = parseInt(text)
-      }
+    TabButton {
+      text: qsTr("Второе задание")
+    }
+  }
+
+  StackLayout {
+    anchors.fill: parent
+    currentIndex: bar.currentIndex
+
+    Item {
+      Task1 {}
     }
 
-    Row {
-      Task1 {
-      }
-    }
-
-    Row {
+    Item {
       Task2 {}
     }
   }

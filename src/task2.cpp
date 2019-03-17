@@ -28,6 +28,7 @@ QString Task2::currentMonth()
 {
     return currentMonth_;
 }
+
 void Task2::setCurrentMonth(QString const &currentMonth)
 {
     if (currentMonth == currentMonth_)
