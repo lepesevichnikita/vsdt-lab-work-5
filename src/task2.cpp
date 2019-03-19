@@ -18,7 +18,7 @@ QString Task2::currentMonthName()
 
 void Task2::initMonths()
 {
-    QFile file("://months.json");
+    QFile file("://json/months.json");
     file.open(QIODevice::ReadOnly);
     months_ = QJsonDocument::fromJson(file.readAll());
     file.close();

@@ -1,8 +1,14 @@
 <RCC>
-  <qresource prefix="/">
-    <file>main.qml</file>
-    <file>Task1.qml</file>
-    <file>Task2.qml</file>
-    <file>months.json</file>
-  </qresource>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Task1.qml</file>
+        <file>Task2.qml</file>
+        <file>Task3.qml</file>
+    </qresource>
+    <qresource prefix="images/">
+        <file>./images/task3area.png</file>
+    </qresource>
+    <qresource prefix="json/">
+        <file>./json/months.json</file>
+    </qresource>
 </RCC>

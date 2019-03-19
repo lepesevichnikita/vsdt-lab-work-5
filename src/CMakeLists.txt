@@ -1,12 +1,14 @@
 qt5_wrap_cpp(lab5QtClasses
         "${INCLUDE_DIR}/task1.h"
         "${INCLUDE_DIR}/task2.h"
+        "${INCLUDE_DIR}/task3.h"
         )
 
 set(lab5_SRCS
         main.cpp
         task1.cpp
         task2.cpp
+        task3.cpp
         ${lab5QtClasses})
 
 qtquick_compiler_add_resources(RESOURCES
