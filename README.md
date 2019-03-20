@@ -1,4 +1,4 @@
-# Laboratory #5 work on the subject "Visual software development tools"
+# Fifth laboratory work on the subject "Visual software development tools"
 ## Project on c++/Qt(Qt Quick)/CMake
 
 ## Task 1
