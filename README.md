@@ -11,9 +11,9 @@ Enter outer and inter radius of ring to calculate it area.
 ## Task 2
 
 Enter number of month to get it name.
-* header: [include/task2.h](include/task2.h, "Header of second task")
+* header: [include/task2.h](include/task2.h "Header of second task")
 * source: [src/task2.cpp](src/task2.cpp "Source of second task")
-* view: [resources/Task2.qml](resources/Task2.qml, "QML view of second task")
+* view: [resources/Task2.qml](resources/Task2.qml "QML view of second task")
 * list of months: [resources/json/months.json](resources/json/months.json, "List of months")
 
 ## Task 3
