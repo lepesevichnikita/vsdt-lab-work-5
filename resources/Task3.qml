@@ -18,6 +18,16 @@ ColumnLayout {
 
     Label {
         Layout.fillWidth: true
+        wrapMode: Text.Wrap
+        text: qsTr("Введите координаты точки, чтобы проверить, попадает ли она в заданную область")
+    }
+
+    Image {
+        source: "/images/task3area.png"
+    }
+
+    Label {
+        Layout.fillWidth: true
         text: qsTr("X")
     }
 
@@ -60,7 +70,7 @@ ColumnLayout {
 
     Label {
         Layout.fillWidth: true
-
+        wrapMode: Text.Wrap
         text: task3.result ? qsTr("Точка находится в заданной области") : qsTr("Точка не находится в заданной области")
     }
 }

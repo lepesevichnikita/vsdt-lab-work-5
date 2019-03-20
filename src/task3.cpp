@@ -5,18 +5,19 @@
 #include <task3.h>
 
 Task3::Task3(QObject *parent)
-    : QObject(parent), x_(0), y_(0), r_(0)
+    : QObject(parent), point_(0, 0), r_(0)
 {
 
 }
 
 qreal Task3::x()
 {
-    return x_;
+    return point_.x;
 }
 
 qreal Task3::y()
-{ return y_;
+{
+    return point_.y;
 }
 
 qreal Task3::r()
@@ -26,26 +27,29 @@ qreal Task3::r()
 
 bool Task3::result()
 {
-    bool isPointInCircle = IsPointInCircle(x_, y_, -r_, r_, r_);
-    bool isPointInRectangle = IsPointInRectangle(x_, y_, 0, 0, 2 * r_, -r_);
+    const Point circleCenter = {-r_, r_};
+    const Point topLeftCorner = {0, 0};
+    const Point bottomRightCorner = {2 * r_, -r_};
+    bool isPointInCircle = point_.IsPointInCircle(circleCenter, r_);
+    bool isPointInRectangle = point_.IsPointInRectangle(topLeftCorner, bottomRightCorner);
     bool result = isPointInCircle | isPointInRectangle;
-    return  result;
+    return result;
 }
 
 void Task3::setX(const qreal &x)
 {
-    if (x_ == x)
+    if (point_.x == x)
         return;
-    x_ = x;
+    point_.x = x;
     emit xChanged();
     emit resultChanged();
 }
 
 void Task3::setY(const qreal &y)
 {
-    if (y_ ==  y)
+    if (point_.y == y)
         return;
-    y_ = y;
+    point_.y = y;
     emit yChanged();
     emit resultChanged();
 }
@@ -59,26 +63,32 @@ void Task3::setR(const qreal &r)
     emit resultChanged();
 }
 
-bool Task3::IsPointInCircle(const qreal &x,
-                            const qreal &y,
-                            const qreal &circleX,
-                            const qreal &circleY,
-                            const qreal &circleRaidus)
+bool Task3::Point::IsPointInCircle(const Point &circleCenter,
+                                   const qreal &circleRaidus)
 {
-    qDebug() << "X: " << x << "Y: " <<  y << "circle X: " << circleX << "circleY: " << circleY;
-    qreal lengthBetweenPointAndCircleCenter = qSqrt(qPow(x - circleX, 2) + qPow(y - circleY, 2));
-    qDebug() << "length between point and circle center" << lengthBetweenPointAndCircleCenter;
+    qreal lengthBetweenPointAndCircleCenter = lengthToOtherPoint(circleCenter);
     bool result = lengthBetweenPointAndCircleCenter <= circleRaidus;
     return result;
 }
-bool Task3::IsPointInRectangle(const qreal &x,
-                               const qreal &y,
-                               const qreal &rectangleTopLeftX,
-                               const qreal &rectangleTopLeftY,
-                               const qreal &rectangleBottomRightX,
-                               const qreal &rectangleBottomRightY)
+
+bool Task3::Point::IsPointInRectangle(const Point &topLeftCorner,
+                                      const Point &bottomRightCorner)
 {
-    bool result = x >= rectangleTopLeftX & x <= rectangleBottomRightX;
-    result &= y >= rectangleTopLeftY & y <= rectangleBottomRightY;
+    bool xIsInRange = IsCoordinateInRange(x, topLeftCorner.x, bottomRightCorner.x);
+    bool yIsInRange = IsCoordinateInRange(y, topLeftCorner.y, bottomRightCorner.y);
+    bool result = xIsInRange & yIsInRange;
     return result;
+}
+
+qreal Task3::Point::lengthToOtherPoint(const Task3::Point &otherPoint) const
+{
+    qreal result = qSqrt(qPow(x - otherPoint.x, 2) + qPow(y - otherPoint.y, 2));
+    return result;
+}
+
+bool Task3::Point::IsCoordinateInRange(const qreal &coordinate, const qreal &a, const qreal &b)
+{
+    qreal rangeStart = qMin(a, b);
+    qreal rangeEnd = qMax(a, b);
+    return coordinate >= rangeStart & coordinate <= rangeEnd;
 }

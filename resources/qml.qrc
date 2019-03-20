@@ -5,10 +5,10 @@
         <file>Task2.qml</file>
         <file>Task3.qml</file>
     </qresource>
-    <qresource prefix="images/">
-        <file>./images/task3area.png</file>
+    <qresource prefix="/images">
+        <file>images/task3area.png</file>
     </qresource>
-    <qresource prefix="json/">
-        <file>./json/months.json</file>
+    <qresource prefix="/json">
+        <file>json/months.json</file>
     </qresource>
 </RCC>

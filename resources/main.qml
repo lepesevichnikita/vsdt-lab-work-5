@@ -4,9 +4,10 @@ import QtQuick.Layouts 1.3
 
 ApplicationWindow {
   property int inputMinimumHeight: 20
-  minimumWidth: 240
-  minimumHeight: 320
+  minimumWidth: 320
+  minimumHeight: 640
 
+  onWidthChanged: print(width, height)
   visible: true
   title: qsTr("Lab5")
 

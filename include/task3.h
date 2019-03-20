@@ -42,6 +42,15 @@ Q_OBJECT
                    NOTIFY
                    resultChanged)
 public:
+    struct Point{
+        qreal x, y;
+        Point(const qreal &x, const qreal &y): x(x), y(y) {}
+        qreal lengthToOtherPoint(const Point&) const;
+        bool IsPointInRectangle(const Point&, const Point&);
+        bool IsPointInCircle(const Point&, const qreal &);
+        static bool IsCoordinateInRange(const qreal&, const qreal&, const qreal&);
+    };
+
     explicit Task3(QObject *parent = nullptr);
 
     qreal x();
@@ -60,13 +69,8 @@ signals:
     void resultChanged();
 
 private:
-    qreal x_;
-    qreal y_;
+    Point point_;
     qreal r_;
-
-    static bool IsPointInCircle(const qreal &, const qreal &, const qreal &, const qreal &, const qreal &);
-    static bool
-    IsPointInRectangle(const qreal &, const qreal &, const qreal &, const qreal &, const qreal &, const qreal &);
 };
 
 #endif //LAB5_TASK3_H
